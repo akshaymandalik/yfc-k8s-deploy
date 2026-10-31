@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const signup = async (formData) => {
   try {
-    const response = await axios.post("http://localhost:5000/api/auth/signup", {
+    const response = await axios.post("http://localhost:5001/api/auth/signup", {
       username: formData.username,
       password: formData.password,
     });
@@ -23,7 +23,7 @@ export const signup = async (formData) => {
 };
 export const signin = async (formData) => {
   try {
-    const response = await axios.post("http://localhost:5000/api/auth/signin", {
+    const response = await axios.post("http://localhost:5001/api/auth/signin", {
       username: formData.username,
       password: formData.password,
     });
@@ -33,21 +33,24 @@ export const signin = async (formData) => {
       response: response.data,
     };
   } catch (error) {
+    const data = error.response?.data;
+
     return {
       success: false,
       response:
-        error.response?.data?.message ||
-        error.response?.data?.error[0] ||
+        data?.message ||
+        data?.error?.[0] ||
+        data?.errors?.[0] ||
+        error.message ||
         "Something went wrong",
       status: error.response?.status,
     };
   }
 };
-
 export const isUserExist = async (username) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/isUserExist",
+      "http://localhost:5001/api/auth/isUserExist",
       {
         username,
       },
@@ -71,7 +74,7 @@ export const isUserExist = async (username) => {
 export const verifyOtp = async (otp) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/verifyOtp",
+      "http://localhost:5001/api/auth/verifyOtp",
       {
         otp,
       },
@@ -97,7 +100,7 @@ export const updateUserPass = async (formData) => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/updateUserPass",
+      "http://localhost:5001/api/auth/updateUserPass",
       {
         username: formData.username,
         password: formData.password,

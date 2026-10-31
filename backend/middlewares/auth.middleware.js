@@ -1,7 +1,7 @@
 import { emailSchema, passwordSchema } from "../utils/validationTypes.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-dotenv.config({ path: "./config/env" });
+dotenv.config({ path: "./config/.env" });
 
 export const validateUserSchema = async (req, res, next) => {
   try {

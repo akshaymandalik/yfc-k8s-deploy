@@ -1,31 +1,9 @@
-version: "3.9"
-
-services:
-  mongo:
-    image: mongo:7
-    container_name: campuskart-mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
-  backend:
-    build: ./backend
-    container_name: campuskart-backend
-    ports:
-      - "8080:5000"
-    env_file:
+services: 
+    backend:
+      image: yfc-backend:v4
+      build: ./backend
+      container_name: yfc-backend
+      ports:
+      - "5001:5001"
+      env_file: 
       - ./backend/config/.env
-    depends_on:
-      - mongo
-
-  frontend:
-    build: ./frontend
-    container_name: campuskart-frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-
-volumes:
-  mongo_data:

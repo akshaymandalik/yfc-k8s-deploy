@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config({ path: "../config/.env" });
 
-
 export const connectDB = async () => {
-  
-  const uri = process.env.MONGOSTR;
+  const uri = process.env.MONGO_URI;
 
   try {
     await mongoose.connect(uri);
@@ -15,5 +13,14 @@ export const connectDB = async () => {
     console.error("Connection error:", error.message);
     process.exit(1); // Exit process with failure
   }
-}
+};
 
+export const disconnectDB = async () => {
+  try {
+    await mongoose.connection.close();
+    console.log("MongoDB connection closed successfully");
+  } catch (error) {
+    console.error("Error closing MongoDB connection:", error.message);
+    throw error;
+  }
+};
