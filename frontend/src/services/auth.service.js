@@ -1,8 +1,10 @@
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 export const signup = async (formData) => {
   try {
-    const response = await axios.post("http://localhost:5001/api/auth/signup", {
+    const response = await axios.post(`${API_URL}/api/auth/signup`, {
       username: formData.username,
       password: formData.password,
     });
@@ -23,7 +25,7 @@ export const signup = async (formData) => {
 };
 export const signin = async (formData) => {
   try {
-    const response = await axios.post("http://localhost:5001/api/auth/signin", {
+    const response = await axios.post(`${API_URL}/api/auth/signin`, {
       username: formData.username,
       password: formData.password,
     });
@@ -49,12 +51,9 @@ export const signin = async (formData) => {
 };
 export const isUserExist = async (username) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5001/api/auth/isUserExist",
-      {
-        username,
-      },
-    );
+    const response = await axios.post(`${API_URL}/api/auth/isUserExist`, {
+      username,
+    });
     return {
       success: true,
       response: response.data,
@@ -73,12 +72,9 @@ export const isUserExist = async (username) => {
 
 export const verifyOtp = async (otp) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5001/api/auth/verifyOtp",
-      {
-        otp,
-      },
-    );
+    const response = await axios.post(`${API_URL}/api/auth/verifyOtp`, {
+      otp,
+    });
     return {
       success: true,
       response: response.data,
@@ -99,13 +95,10 @@ export const updateUserPass = async (formData) => {
   console.log(formData, "formdata");
 
   try {
-    const response = await axios.post(
-      "http://localhost:5001/api/auth/updateUserPass",
-      {
-        username: formData.username,
-        password: formData.password,
-      },
-    );
+    const response = await axios.post(`${API_URL}/api/auth/updateUserPass`, {
+      username: formData.username,
+      password: formData.password,
+    });
     return {
       success: true,
       response: response.data,
