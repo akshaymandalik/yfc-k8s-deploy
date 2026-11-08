@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
           - name: frontend
-            image: yfc-frontend:v1
+            image: yfc-frontend:v2
             imagePullPolicy: IfNotPresent
             ports: 
               - containerPort: 80

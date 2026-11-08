@@ -28,11 +28,11 @@ export const ByCity = () => {
       title: "Used Cars In Delhi",
       imgUrl: img,
     },
-    {
-      id: "6",
-      title: "User Cars In Hyderabad",
-      imgUrl: img,
-    },
+    // {
+    //   id: "6",
+    //   title: "User Cars In Hyderabad",
+    //   imgUrl: img,
+    // },
   ];
 
   return (
