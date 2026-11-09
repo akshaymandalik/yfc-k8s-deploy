@@ -1,6 +1,9 @@
 Name: yfc-k8s-deploy
+
 Summary: A full-stack MERN app (MongoDB, Express, React, Node) containerized with Docker and deployed on Kubernetes with an NGINX Ingress.
+
 Architecture: 
+
 <img width="1356" height="2760" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/bf7db58f-de4a-405b-8206-cadebfd86534" />
 
 Tech Stack:
