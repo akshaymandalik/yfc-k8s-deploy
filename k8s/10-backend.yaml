@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: yfc-backend:v4
+          image: yfc-backend:v3
           imagePullPolicy: IfNotPresent
           ports: 
             - containerPort: 5001
@@ -24,11 +24,11 @@ spec:
                 name: backend-env
           readinessProbe: 
             httpGet: 
-              path: /health 
+              path: /api/health 
               port: 5001
           livenessProbe:
             httpGet:
-              path: /health
+              path: /api/health
               port: 5001
             initialDelaySeconds: 15
 
